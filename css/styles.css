@@ -1,0 +1,279 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 90px;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Estilização dos Títulos */
+h1 {
+    color: #ffbb00; 
+    text-align: left;
+    padding-left: 10px;
+    font-size: 60px;
+}
+
+h2 {
+    color: #ffbb00;
+    text-align: left;
+    padding-left: 10px;
+}
+
+h4 {
+    color: #ffbb00;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* Estilização do Formulário */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 60px;
+}
+
+label {
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="date"], input[type="number"] {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 300px; /* Largura fixa para os campos de entrada */
+    box-sizing: border-box;
+}
+
+/* Botões de Expansão de Seções */
+button {
+    background-color: #ffbb00;
+    border: none;
+    border-radius: 12px;
+    color: #0e0e0e;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    width: 250px;
+    justify-content: center;
+    height: 40px;
+}
+
+button span {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+button:hover {
+    color: #000000a2;
+}
+
+
+.btn-secundario {
+    background-color: transparent; 
+    color: #0e0e0e;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.btn-secundario:hover {
+    color: #f3b50ad0; 
+}
+
+.btn-calculo {
+    background-color: #ffbb00; 
+    color: #000000!important;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn-calculo:hover {
+    background-color: #eea70e98!important;
+}
+
+
+.date-pair {
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.remove-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #e40707a8; 
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 25px;
+    width: 100px;
+    font-size: 11px;
+}
+
+.remove-button:hover {
+    background-color: #cc0000b9; 
+    color: #ccc;
+}
+
+/* Seções de Resultado */
+.resultado, .valor-calculado, .resultado-mensalidade, .resultado-soma {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Modo de Cálculo */
+.calculo-modo {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    width: 350px;
+}
+
+.calculo-modo label {
+    color: #333;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.calculo-modo select {
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.calculo-modo p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ffbb00;
+    font-size: 15px;
+}
+
+/* Mensalidade Calculadora */
+.mensalidade-calculadora {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.mensalidade-calculadora h2 {
+    color: #ffbb00;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.mensalidade-calculadora label {
+    color: #333;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.mensalidade-calculadora input[type="number"] {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.mensalidade-calculadora button {
+    background-color: #ffbb00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+
+.mensalidade-calculadora button:hover {
+    background-color: #ffbb00;
+}
+
+
+.soma-calculadora {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 1140px;
+    float: left;
+}
+
+.soma-calculadora label {
+    color: #333;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.soma-calculadora input[type="number"], .soma-calculadora select {
+    width: 100%;
+    padding: 6px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.soma-calculadora select {
+    color: #424242;
+}
+
+.soma-calculadora button {
+    background-color: #ffbb00;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.soma-calculadora button:hover {
+    background-color: #b98800;
+}
+
+/* Seções Ocultáveis */
+#valorProporcionalSection,
+#diferencaMensalidadeSection {
+    margin-left: 20px;
+    padding-top: 10px;
+}

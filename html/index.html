@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dias</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <h1>Calculadora de Dias</h1>
+    
+    <form id="dateForm">
+        <div id="datePairsContainer">
+            <h4>Insira aqui o período</h4>
+        </div>
+        <button type="button" class="btn-principal" onclick="adicionarPeriodo()">Adicionar Período</button>
+        <button type="submit" class="btn-principal">Calcular Total de Dias</button>
+    </form>
+    
+    <div id="resultado" class="resultado"></div>
+    
+    <div class="calculo-modo">
+        <label for="tipoCalculo">Escolha o tipo de Período</label>
+        <select id="tipoCalculo" onchange="atualizarTipoCalculo()">
+            <option value="reativacao">Reativação/Upgrade</option>
+            <option value="alteracao">Alteração de Vencimento</option>
+        </select>
+        <p id="tipoCalculoSelecionado">Tipo de período selecionado: Reativação</p>
+    </div>
+
+    <div>
+        <button class="btn-secundario" onclick="toggleSection('valorProporcionalSection')">
+            <span>&#9660;</span> Calcular Vencimento/Reativação
+    </div>
+    <div id="valorProporcionalSection" style="display: none;">
+        <div class="valor-form">
+            <label for="valorTotal">Valor da atual mensalidade:</label>
+            <input type="number" id="valorTotal" placeholder="Digite a mensalidade do cliente" step="0.01">
+            <button type="button" class="btn-calculo" onclick="calcularValorProporcional()">Calcular Valor</button>
+        </div>
+        <div id="valorCalculado" class="valor-calculado"></div>
+    </div>
+
+    <div>
+        <button class="btn-secundario" onclick="toggleSection('diferencaMensalidadeSection')">
+            <span>&#9660;</span> Calcular Upgrade
+        </button>
+    </div>
+    <div id="diferencaMensalidadeSection" style="display: none;">
+        <div class="mensalidade-calculadora">
+            <h2>Upgrade de plano</h2>
+            <label for="novaMensalidade">Nova Mensalidade:</label>
+            <input type="number" id="novaMensalidade" placeholder="Digite o valor da nova mensalidade" step="0.01">
+            
+            <label for="antigaMensalidade">Antiga Mensalidade:</label>
+            <input type="number" id="antigaMensalidade" placeholder="Digite o valor da antiga mensalidade" step="0.01">
+            
+            <button type="button" class="btn-calculo" onclick="calcularDiferencaMensalidade()">Calcular valor</button>
+            
+            <div id="resultadoMensalidade" class="resultado-mensalidade"></div>
+        </div>
+    </div>
+
+    <div class="soma-calculadora">
+        <h3>Valor total</h3>
+        <label for="valorSomar">Valor a Somar:</label>
+        <input type="number" id="valorSomar" placeholder="Digite o valor" step="0.01">
+        
+        <label for="opcaoSomar">Somar a:</label>
+        <select id="opcaoSomar">
+            <option value="proporcional">Reativação/Vencimento</option>
+            <option value="diferenca">Nova mensalidade (Upgrade)</option>
+        </select>
+        
+        <button type="button" class="btn-calculo" onclick="calcularSoma()">Somar</button>
+        
+        <div id="resultadoSoma" class="resultado-soma"></div>
+    </div>
+    
+    <script src="../js/scripts.js"></script>
+</body>
+</html>
