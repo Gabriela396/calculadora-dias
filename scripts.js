@@ -2,7 +2,7 @@ const maxPeriodos = 10;
 let contadorPeriodos = 0;
 let calcularComMaisUm = true;
 
-// Função para adicionar um novo período de datas
+
 function adicionarPeriodo() {
     if (contadorPeriodos >= maxPeriodos) {
         alert('Você já adicionou o número máximo de períodos.');
@@ -106,7 +106,7 @@ function calcularValorProporcional() {
     const valorPorDia = valorTotal / 30;
     const valorCalculado = valorPorDia * totalDias;
 
-    document.getElementById('valorCalculado').textContent = `Valor proporcional: R$ ${valorCalculado.toFixed(2)}`;
+    document.getElementById('valorCalculado').textContent = `Valor proporcional a pagar: R$ ${valorCalculado.toFixed(2)}`;
 }
 
 // Função para calcular a diferença de mensalidade
@@ -130,7 +130,7 @@ function calcularDiferencaMensalidade() {
     const diferenca = novaMensalidade - antigaMensalidade;
     const resultado = (diferenca / 30) * totalDias;
 
-    document.getElementById('resultadoMensalidade').textContent = `Resultado da diferença: R$ ${resultado.toFixed(2)}`;
+    document.getElementById('resultadoMensalidade').textContent = `Valor proporcional a pagar: R$ ${resultado.toFixed(2)}`;
 }
 
 // Função para calcular a soma
