@@ -3,26 +3,34 @@ body {
     margin: 90px;
     background-color: #f8f8f8;
     color: #333;
+    background-image: url('imagens/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-/* Estilização dos Títulos */
+
 h1 {
-    color: #ffbb00; 
+    color: #ffffff; 
     text-align: left;
     padding-left: 10px;
     font-size: 60px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.575);
 }
 
+
 h2 {
-    color: #ffbb00;
+    color: #ff7b00;
     text-align: left;
     padding-left: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.336);
 }
 
 h4 {
-    color: #ffbb00;
+    color: #ff7b00;
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.24);
 }
 
 /* Estilização do Formulário */
@@ -45,13 +53,13 @@ input[type="date"], input[type="number"] {
     border-radius: 4px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
-    width: 300px; /* Largura fixa para os campos de entrada */
+    width: 300px;
     box-sizing: border-box;
 }
 
-/* Botões de Expansão de Seções */
+
 button {
-    background-color: #ffbb00;
+    background-color: #ff7b00;
     border: none;
     border-radius: 12px;
     color: #0e0e0e;
@@ -60,7 +68,7 @@ button {
     margin: 10px 0;
     display: flex;
     align-items: center;
-    width: 250px;
+    width: 200px;
     justify-content: center;
     height: 40px;
 }
@@ -74,7 +82,6 @@ button:hover {
     color: #000000a2;
 }
 
-
 .btn-secundario {
     background-color: transparent; 
     color: #0e0e0e;
@@ -86,24 +93,25 @@ button:hover {
 }
 
 .btn-secundario:hover {
-    color: #f3b50ad0; 
+    color: #f3860ad0; 
 }
 
 .btn-calculo {
-    background-color: #ffbb00; 
+    background-color: #ff7b00; 
     color: #000000!important;
     border: none;
     cursor: pointer;
     padding: 10px 20px;
     border-radius: 4px;
     font-size: 16px;
+    width: 140px;
 }
 
 .btn-calculo:hover {
-    background-color: #eea70e98!important;
+    background-color: #ff8800da!important;
 }
 
-
+/* Date Pair */
 .date-pair {
     margin-bottom: 20px;
     position: relative;
@@ -161,6 +169,7 @@ button:hover {
     display: block;
     margin-bottom: 10px;
     font-size: 15px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.164);
 }
 
 .calculo-modo select {
@@ -175,32 +184,37 @@ button:hover {
 .calculo-modo p {
     margin-top: 10px;
     font-weight: bold;
-    color: #ffbb00;
+    color: #ff7b00;
     font-size: 15px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.164);
 }
 
-/* Mensalidade Calculadora */
+/* Estilização dos boxes de Reativação e Alteração de Vencimento */
+.box-section,
 .mensalidade-calculadora {
     background-color: #fff;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
+.box-section h2,
 .mensalidade-calculadora h2 {
-    color: #ffbb00;
+    color: #ff7b00;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
+.box-section label,
 .mensalidade-calculadora label {
     color: #333;
     font-weight: bold;
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
+.box-section input[type="number"],
 .mensalidade-calculadora input[type="number"] {
     width: 300px;
     padding: 8px;
@@ -211,8 +225,9 @@ button:hover {
     box-sizing: border-box;
 }
 
+.box-section button,
 .mensalidade-calculadora button {
-    background-color: #ffbb00;
+    background-color: #ff7b00;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -220,26 +235,27 @@ button:hover {
     border-radius: 4px;
 }
 
+.box-section button:hover,
 .mensalidade-calculadora button:hover {
-    background-color: #ffbb00;
+    background-color: #ff7b00ea;
 }
 
-
+/* Soma Calculadora */
 .soma-calculadora {
     background-color: #fff;
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    width: 1140px;
-    float: left;
+    margin-top: 30px;
+    width: 1240px;
+    float: center;
 }
 
 .soma-calculadora label {
     color: #333;
     font-weight: bold;
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 14px;
 }
 
@@ -258,7 +274,7 @@ button:hover {
 }
 
 .soma-calculadora button {
-    background-color: #ffbb00;
+    background-color: #ff7b00;
     color: #000000;
     border: none;
     cursor: pointer;
@@ -268,12 +284,13 @@ button:hover {
 }
 
 .soma-calculadora button:hover {
-    background-color: #b98800;
+    background-color: #ff7b00e3;
 }
 
 /* Seções Ocultáveis */
 #valorProporcionalSection,
+#vencimentoSection,
 #diferencaMensalidadeSection {
-    margin-left: 20px;
+    margin-left: 3px;
     padding-top: 10px;
 }

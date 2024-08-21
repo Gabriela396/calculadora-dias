@@ -2,7 +2,6 @@ const maxPeriodos = 10;
 let contadorPeriodos = 0;
 let calcularComMaisUm = true;
 
-
 function adicionarPeriodo() {
     if (contadorPeriodos >= maxPeriodos) {
         alert('Você já adicionou o número máximo de períodos.');
@@ -28,7 +27,6 @@ function adicionarPeriodo() {
     contadorPeriodos++;
 }
 
-// Função para remover um período de datas
 function removerPeriodo(id) {
     const periodoDiv = document.getElementById(`periodo${id}`);
     periodoDiv.remove();
@@ -45,20 +43,31 @@ function removerPeriodo(id) {
     }
 }
 
-// Função para atualizar o tipo de cálculo
 function atualizarTipoCalculo() {
     const tipoCalculo = document.getElementById('tipoCalculo').value;
     
+    // Oculta todas as seções inicialmente
+    document.getElementById('valorProporcionalSection').style.display = 'none';
+    document.getElementById('vencimentoSection').style.display = 'none';
+    document.getElementById('diferencaMensalidadeSection').style.display = 'none';
+
     if (tipoCalculo === 'reativacao') {
         calcularComMaisUm = true;
         document.getElementById('tipoCalculoSelecionado').textContent = 'Tipo de Cálculo Selecionado: Reativação';
+        document.getElementById('valorProporcionalSection').style.display = 'block'; // Mostra a seção correspondente
+
     } else if (tipoCalculo === 'alteracao') {
         calcularComMaisUm = false;
         document.getElementById('tipoCalculoSelecionado').textContent = 'Tipo de Cálculo Selecionado: Alteração de Vencimento';
+        document.getElementById('vencimentoSection').style.display = 'block'; // Mostra a seção correspondente
+
+    } else if (tipoCalculo === 'upgrade') {
+        calcularComMaisUm = true;
+        document.getElementById('tipoCalculoSelecionado').textContent = 'Tipo de Cálculo Selecionado: Upgrade';
+        document.getElementById('diferencaMensalidadeSection').style.display = 'block'; // Mostra a seção correspondente
     }
 }
 
-// Função para calcular os dias entre datas
 function calcularDiasEntreDatas(dataInicial, dataFinal) {
     const [ano1, mes1, dia1] = dataInicial.split('-').map(Number);
     const [ano2, mes2, dia2] = dataFinal.split('-').map(Number);
@@ -69,7 +78,6 @@ function calcularDiasEntreDatas(dataInicial, dataFinal) {
     return calcularComMaisUm ? (dias2 - dias1) + 1 : (dias2 - dias1);
 }
 
-// Função para calcular o total de dias de utilização
 document.getElementById('dateForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -87,7 +95,6 @@ document.getElementById('dateForm').addEventListener('submit', function(event) {
     document.getElementById('resultado').textContent = `Total de dias de utilização: ${totalDias} dias.`;
 });
 
-// Função para calcular o valor proporcional
 function calcularValorProporcional() {
     const totalDiasElement = document.getElementById('resultado').textContent;
     const valorTotal = parseFloat(document.getElementById('valorTotal').value);
@@ -109,7 +116,6 @@ function calcularValorProporcional() {
     document.getElementById('valorCalculado').textContent = `Valor proporcional a pagar: R$ ${valorCalculado.toFixed(2)}`;
 }
 
-// Função para calcular a diferença de mensalidade
 function calcularDiferencaMensalidade() {
     const novaMensalidade = parseFloat(document.getElementById('novaMensalidade').value);
     const antigaMensalidade = parseFloat(document.getElementById('antigaMensalidade').value);
@@ -133,53 +139,47 @@ function calcularDiferencaMensalidade() {
     document.getElementById('resultadoMensalidade').textContent = `Valor proporcional a pagar: R$ ${resultado.toFixed(2)}`;
 }
 
-// Função para calcular a soma
-function calcularSoma() {
-    const valorSomar = parseFloat(document.getElementById('valorSomar').value);
-    const opcaoSomar = document.getElementById('opcaoSomar').value;
-    
-    let resultadoOperacao = 0;
+function calcularSomaProporcional() {
+    const valorProporcionalElement = document.getElementById('valorCalculado').textContent;
+    const valorSomar = parseFloat(document.getElementById('valorSomarProporcional').value);
 
-    if (isNaN(valorSomar)) {
-        alert('Por favor, insira um valor válido para somar.');
+    if (isNaN(valorSomar) || !valorProporcionalElement) {
+        alert('Por favor, insira um valor válido e calcule o valor proporcional.');
         return;
     }
 
-    if (opcaoSomar === 'proporcional') {
-        const valorProporcionalElement = document.getElementById('valorCalculado').textContent;
-        if (!valorProporcionalElement) {
-            alert('Por favor, calcule o valor proporcional antes de realizar esta operação.');
-            return;
-        }
-        const valorProporcional = parseFloat(valorProporcionalElement.replace('Valor proporcional: R$ ', ''));
-        resultadoOperacao = valorSomar + valorProporcional;
+    const valorProporcional = parseFloat(valorProporcionalElement.replace('Valor proporcional a pagar: R$ ', ''));
+    const resultadoOperacao = valorSomar + valorProporcional;
 
-    } else if (opcaoSomar === 'diferenca') {
-        const valorDiferencaElement = document.getElementById('resultadoMensalidade').textContent;
-        if (!valorDiferencaElement) {
-            alert('Por favor, calcule a diferença de mensalidade antes de realizar esta operação.');
-            return;
-        }
-        const valorDiferenca = parseFloat(valorDiferencaElement.replace('Resultado da diferença: R$ ', ''));
-        resultadoOperacao = valorSomar + valorDiferenca;
-    }
-
-    document.getElementById('resultadoSoma').textContent = `Resultado Final: R$ ${resultadoOperacao.toFixed(2)}`;
+    document.getElementById('resultadoSomaProporcional').textContent = `Resultado Final: R$ ${resultadoOperacao.toFixed(2)}`;
 }
 
-// Função para alternar a visibilidade de seções
+function calcularSomaDiferenca() {
+    const valorDiferencaElement = document.getElementById('resultadoMensalidade').textContent;
+    const valorSomar = parseFloat(document.getElementById('valorSomarDiferenca').value);
+
+    if (isNaN(valorSomar) || !valorDiferencaElement) {
+        alert('Por favor, insira um valor válido e calcule a diferença de mensalidade.');
+        return;
+    }
+
+    const valorDiferenca = parseFloat(valorDiferencaElement.replace('Valor proporcional a pagar: R$ ', ''));
+    const resultadoOperacao = valorSomar + valorDiferenca;
+
+    document.getElementById('resultadoSomaDiferenca').textContent = `Resultado Final: R$ ${resultadoOperacao.toFixed(2)}`;
+}
+
 function toggleSection(sectionId) {
     const section = document.getElementById(sectionId);
     const icon = section.previousElementSibling.querySelector('span');
     
     if (section.style.display === 'none' || section.style.display === '') {
         section.style.display = 'block';
-        icon.innerHTML = '&#9650;'; // Muda a seta para cima quando a seção está aberta
+        icon.innerHTML = '&#9650;';
     } else {
         section.style.display = 'none';
-        icon.innerHTML = '&#9660;'; // Muda a seta para baixo quando a seção está fechada
+        icon.innerHTML = '&#9660;';
     }
 }
 
-// Inicializa a adição do primeiro período ao carregar a página
 adicionarPeriodo();
