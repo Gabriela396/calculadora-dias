@@ -71,7 +71,7 @@ function atualizarTipoCalculo() {
         calcularComMaisUm = true;
         document.getElementById('reativacaoSection').style.display = 'block';
     } else if (tipoCalculo === 'upgrade') {
-        calcularComMaisUm = true;
+        calcularComMaisUm = false;
         document.getElementById('upgradeSection').style.display = 'block';
     } else if (tipoCalculo === 'alteracao') {
         calcularComMaisUm = false;
