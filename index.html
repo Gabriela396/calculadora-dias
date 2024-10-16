@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Calculadora de Proporcional</h1>
+
+    <div class="tipo-calculo-box">
+        <h2>Escolha o tipo de cálculo</h2>
+        <label for="tipoCalculo">Tipo de Cálculo:</label>
+        <select id="tipoCalculo" onchange="atualizarTipoCalculo()">
+            <option value="reativacao">Reativação/Cancelamento</option>
+            <option value="upgrade">Upgrade</option>
+            <option value="alteracao">Alteração de Vencimento</option>
+        </select>
+    </div>
+    
+    <form id="dateForm">
+        <div id="datePairsContainer">
+            <h4>Insira aqui o período</h4>
+            <div class="date-pair">
+                <label for="dataInicial0">Data Inicial: </label>
+                <input type="date" id="dataInicial0" required>
+                <label for="dataFinal0">Data Final: </label>
+                <input type="date" id="dataFinal0" required>
+                <button type="button" class="remove-button" onclick="removerPeriodo(0)">Excluir Período</button>
+            </div>
+        </div>
+        <button type="button" class="btn-principal" onclick="adicionarPeriodo()">Adicionar Período</button>
+        <button type="submit" class="btn-principal">Calcular Total de Dias</button>
+    </form>
+    
+    <div id="resultado" class="resultado"></div>
+
+    <!-- Seções ocultáveis -->
+    <div id="reativacaoSection" class="box-section" style="display: none;">
+        <h2>Reativação/Cancelamento</h2>
+        <div class="valor-form">
+            <label for="valorReativacao">Valor da Mensalidade:</label>
+            <input type="number" id="valorReativacao" placeholder="Digite o valor da mensalidade" step="0.01">
+            <button type="button" class="btn-calculo" onclick="calcularReativacao()">Calcular Valor</button>
+        </div>
+        <div id="resultadoReativacao" class="resultado-calculo"></div>
+        <div class="soma-calculadora">
+            <h3>Soma de Valores</h3>
+            <label for="valorSomarReativacao">Valor a Somar:</label>
+            <input type="number" id="valorSomarReativacao" placeholder="Digite o valor a somar" step="0.01">
+            <button type="button" class="btn-calculo" onclick="somarReativacao()">Somar</button>
+            <div id="resultadoSomaReativacao" class="resultado-soma"></div>
+        </div>
+    </div>
+
+    <div id="upgradeSection" class="box-section" style="display: none;">
+        <h2>Upgrade</h2>
+        <div class="valor-form">
+            <label for="novaMensalidade">Nova Mensalidade:</label>
+            <input type="number" id="novaMensalidade" placeholder="Digite o valor da nova mensalidade" step="0.01">
+            <label for="antigaMensalidade">Antiga Mensalidade:</label>
+            <input type="number" id="antigaMensalidade" placeholder="Digite o valor da antiga mensalidade" step="0.01">
+            <button type="button" class="btn-calculo" onclick="calcularUpgrade()">Calcular Valor</button>
+        </div>
+        <div id="resultadoUpgrade" class="resultado-calculo"></div>
+        <div class="soma-calculadora">
+            <h3>Soma de Valores</h3>
+            <label for="valorSomarUpgrade">Valor a Somar:</label>
+            <input type="number" id="valorSomarUpgrade" placeholder="Digite o valor a somar" step="0.01">
+            <button type="button" class="btn-calculo" onclick="somarUpgrade()">Somar</button>
+            <div id="resultadoSomaUpgrade" class="resultado-soma"></div>
+        </div>
+    </div>
+
+    <div id="alteracaoSection" class="box-section" style="display: none;">
+        <h2>Alteração de Vencimento</h2>
+        <div class="valor-form">
+            <label for="valorAlteracao">Valor da Mensalidade:</label>
+            <input type="number" id="valorAlteracao" placeholder="Digite o valor da mensalidade" step="0.01">
+            <button type="button" class="btn-calculo" onclick="calcularAlteracao()">Calcular Valor</button>
+        </div>
+        <div id="resultadoAlteracao" class="resultado-calculo"></div>
+        <div class="soma-calculadora">
+            <h3>Soma de Valores</h3>
+            <label for="valorSomarAlteracao">Valor a Somar:</label>
+            <input type="number" id="valorSomarAlteracao" placeholder="Digite o valor a somar" step="0.01">
+            <button type="button" class="btn-calculo" onclick="somarAlteracao()">Somar</button>
+            <div id="resultadoSomaAlteracao" class="resultado-soma"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
