@@ -15,10 +15,8 @@ function adicionarPeriodo() {
     periodoDiv.innerHTML = `
         <label for="dataInicial${contadorPeriodos}">Data Inicial: </label>
         <input type="date" id="dataInicial${contadorPeriodos}" required>
-
         <label for="dataFinal${contadorPeriodos}">Data Final: </label>
         <input type="date" id="dataFinal${contadorPeriodos}" required>
-
         <button type="button" class="remove-button" onclick="removerPeriodo(${contadorPeriodos})">Excluir Período</button>
     `;
     container.appendChild(periodoDiv);
@@ -34,7 +32,27 @@ function removerPeriodo(id) {
 
 document.getElementById('dateForm').addEventListener('submit', function(event) {
     event.preventDefault();
+    if (document.getElementById('valorReativacao').value === "") {
+        alert("Por favor, insira o valor da mensalidade.");
+        return;
+    }
+    calcularEAtualizarResultados();
+});
 
+document.getElementById('dateForm').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Previne o envio do formulário
+        calcularEAtualizarResultados();
+    }
+});
+
+function calcularEAtualizarResultados() {
+    let totalDias = calcularTotalDias();
+    document.getElementById('resultado').textContent = `Total de dias de utilização: ${totalDias} dias.`;
+    atualizarValoresCalculo(totalDias);
+}
+
+function calcularTotalDias() {
     let totalDias = 0;
     for (let i = 0; i < contadorPeriodos; i++) {
         const dataInicial = document.getElementById(`dataInicial${i}`).value;
@@ -45,24 +63,22 @@ document.getElementById('dateForm').addEventListener('submit', function(event) {
             totalDias += diasEntreDatas;
         }
     }
-
-    document.getElementById('resultado').textContent = `Total de dias de utilização: ${totalDias} dias.`;
-});
+    return totalDias;
+}
 
 function calcularDiasEntreDatas(dataInicial, dataFinal) {
-    const [ano1, mes1, dia1] = dataInicial.split('-').map(Number);
-    const [ano2, mes2, dia2] = dataFinal.split('-').map(Number);
+    const data1 = new Date(dataInicial);
+    const data2 = new Date(dataFinal);
 
-    const dias1 = (ano1 * 360) + ((mes1 - 1) * 30) + dia1;
-    const dias2 = (ano2 * 360) + ((mes2 - 1) * 30) + dia2;
+    const diffTime = Math.abs(data2 - data1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    return calcularComMaisUm ? (dias2 - dias1) + 1 : (dias2 - dias1);
+    return calcularComMaisUm ? diffDays + 1 : diffDays;
 }
 
 function atualizarTipoCalculo() {
     const tipoCalculo = document.getElementById('tipoCalculo').value;
 
-    // Oculta todas as seções inicialmente
     document.getElementById('reativacaoSection').style.display = 'none';
     document.getElementById('upgradeSection').style.display = 'none';
     document.getElementById('alteracaoSection').style.display = 'none';
@@ -76,6 +92,20 @@ function atualizarTipoCalculo() {
     } else if (tipoCalculo === 'alteracao') {
         calcularComMaisUm = false;
         document.getElementById('alteracaoSection').style.display = 'block';
+    }
+
+    calcularEAtualizarResultados();
+}
+
+function atualizarValoresCalculo(totalDias) {
+    const tipoCalculo = document.getElementById('tipoCalculo').value;
+    
+    if (tipoCalculo === 'reativacao') {
+        calcularReativacao(totalDias);
+    } else if (tipoCalculo === 'upgrade') {
+        calcularUpgrade(totalDias);
+    } else if (tipoCalculo === 'alteracao') {
+        calcularAlteracao(totalDias);
     }
 }
 
@@ -122,4 +152,4 @@ function somarAlteracao() {
     document.getElementById('resultadoSomaAlteracao').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
 }
 
-atualizarTipoCalculo();
+atualizarTipoCalculo();  // Inicializa com a lógica padrão
