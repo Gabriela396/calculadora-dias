@@ -52,8 +52,8 @@ label {
 
 input[type="date"], input[type="number"] {
     padding: 8px;
-    font-size: 16px;
-    border-radius: 4px;
+    font-size: 14px;
+    border-radius: 17px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
     width: 200px;
@@ -144,8 +144,8 @@ button:hover {
 
 .valor-form input[type="number"] {
     padding: 8px;
-    font-size: 13px;
-    border-radius: 4px;
+    font-size: 14px;
+    border-radius: 17px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
     width: 23%;

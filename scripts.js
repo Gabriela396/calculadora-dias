@@ -1,4 +1,4 @@
-const maxPeriodos = 10;
+const maxPeriodos = 10; 
 let contadorPeriodos = 1;  // Começamos com um período já adicionado
 let calcularComMaisUm = true;
 
@@ -30,18 +30,16 @@ function removerPeriodo(id) {
     contadorPeriodos--;
 }
 
+// Função de cálculo sem verificar o valor da mensalidade
 document.getElementById('dateForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    if (document.getElementById('valorReativacao').value === "") {
-        alert("Por favor, insira o valor da mensalidade.");
-        return;
-    }
     calcularEAtualizarResultados();
 });
 
+// Tecla Enter também dispara o cálculo
 document.getElementById('dateForm').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-        event.preventDefault(); // Previne o envio do formulário
+        event.preventDefault();
         calcularEAtualizarResultados();
     }
 });
@@ -69,20 +67,23 @@ function calcularTotalDias() {
 function calcularDiasEntreDatas(dataInicial, dataFinal) {
     const data1 = new Date(dataInicial);
     const data2 = new Date(dataFinal);
+    
+    // Ajustar para que cada mês tenha 30 dias
+    const dias1 = (data1.getUTCFullYear() * 360) + ((data1.getUTCMonth() + 1 - 1) * 30) + data1.getUTCDate();
+    const dias2 = (data2.getUTCFullYear() * 360) + ((data2.getUTCMonth() + 1 - 1) * 30) + data2.getUTCDate();
 
-    const diffTime = Math.abs(data2 - data1);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    return calcularComMaisUm ? diffDays + 1 : diffDays;
+    return calcularComMaisUm ? (dias2 - dias1) + 1 : (dias2 - dias1);
 }
 
 function atualizarTipoCalculo() {
     const tipoCalculo = document.getElementById('tipoCalculo').value;
 
+    // Ocultar todas as seções
     document.getElementById('reativacaoSection').style.display = 'none';
     document.getElementById('upgradeSection').style.display = 'none';
     document.getElementById('alteracaoSection').style.display = 'none';
 
+    // Mostrar a seção correspondente ao tipo de cálculo
     if (tipoCalculo === 'reativacao') {
         calcularComMaisUm = true;
         document.getElementById('reativacaoSection').style.display = 'block';
@@ -94,12 +95,13 @@ function atualizarTipoCalculo() {
         document.getElementById('alteracaoSection').style.display = 'block';
     }
 
+    // Recalcular os resultados
     calcularEAtualizarResultados();
 }
 
 function atualizarValoresCalculo(totalDias) {
     const tipoCalculo = document.getElementById('tipoCalculo').value;
-    
+
     if (tipoCalculo === 'reativacao') {
         calcularReativacao(totalDias);
     } else if (tipoCalculo === 'upgrade') {
@@ -112,44 +114,61 @@ function atualizarValoresCalculo(totalDias) {
 function calcularReativacao() {
     const totalDias = parseInt(document.getElementById('resultado').textContent.replace('Total de dias de utilização: ', '').replace(' dias.', ''));
     const valorMensalidade = parseFloat(document.getElementById('valorReativacao').value);
-    const resultado = (valorMensalidade / 30) * totalDias;
-    document.getElementById('resultadoReativacao').textContent = `Valor proporcional: R$ ${resultado.toFixed(2)}`;
-}
-
-function somarReativacao() {
-    const valorProporcional = parseFloat(document.getElementById('resultadoReativacao').textContent.replace('Valor proporcional: R$ ', ''));
-    const valorSomar = parseFloat(document.getElementById('valorSomarReativacao').value);
-    const resultado = valorProporcional + valorSomar;
-    document.getElementById('resultadoSomaReativacao').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+    
+    if (!isNaN(valorMensalidade) && totalDias > 0) {
+        const resultado = (valorMensalidade / 30) * totalDias;
+        document.getElementById('resultadoReativacao').textContent = `Valor proporcional: R$ ${resultado.toFixed(2)}`;
+    } 
 }
 
 function calcularUpgrade() {
     const totalDias = parseInt(document.getElementById('resultado').textContent.replace('Total de dias de utilização: ', '').replace(' dias.', ''));
     const novaMensalidade = parseFloat(document.getElementById('novaMensalidade').value);
     const antigaMensalidade = parseFloat(document.getElementById('antigaMensalidade').value);
-    const resultado = ((novaMensalidade - antigaMensalidade) / 30) * totalDias;
-    document.getElementById('resultadoUpgrade').textContent = `Valor proporcional: R$ ${resultado.toFixed(2)}`;
-}
-
-function somarUpgrade() {
-    const valorProporcional = parseFloat(document.getElementById('resultadoUpgrade').textContent.replace('Valor proporcional: R$ ', ''));
-    const valorSomar = parseFloat(document.getElementById('valorSomarUpgrade').value);
-    const resultado = valorProporcional + valorSomar;
-    document.getElementById('resultadoSomaUpgrade').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+    
+    if (!isNaN(novaMensalidade) && !isNaN(antigaMensalidade) && totalDias > 0) {
+        const resultado = ((novaMensalidade - antigaMensalidade) / 30) * totalDias;
+        document.getElementById('resultadoUpgrade').textContent = `Valor proporcional: R$ ${resultado.toFixed(2)}`;
+    } 
 }
 
 function calcularAlteracao() {
     const totalDias = parseInt(document.getElementById('resultado').textContent.replace('Total de dias de utilização: ', '').replace(' dias.', ''));
     const valorMensalidade = parseFloat(document.getElementById('valorAlteracao').value);
-    const resultado = (valorMensalidade / 30) * totalDias;
-    document.getElementById('resultadoAlteracao').textContent = `Valor proporcional: R$ ${resultado.toFixed(2)}`;
+    
+    if (!isNaN(valorMensalidade) && totalDias > 0) {
+        const resultado = (valorMensalidade / 30) * totalDias;
+        document.getElementById('resultadoAlteracao').textContent = `Valor proporcional: R$ ${resultado.toFixed(2)}`;
+    } 
+}
+
+
+function somarReativacao() {
+    const valorProporcional = parseFloat(document.getElementById('resultadoReativacao').textContent.replace('Valor proporcional: R$ ', ''));
+    const valorSomar = parseFloat(document.getElementById('valorSomarReativacao').value);
+    if (!isNaN(valorProporcional) && !isNaN(valorSomar)) {
+        const resultado = valorProporcional + valorSomar;
+        document.getElementById('resultadoSomaReativacao').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+    }
+}
+
+function somarUpgrade() {
+    const valorProporcional = parseFloat(document.getElementById('resultadoUpgrade').textContent.replace('Valor proporcional: R$ ', ''));
+    const valorSomar = parseFloat(document.getElementById('valorSomarUpgrade').value);
+    if (!isNaN(valorProporcional) && !isNaN(valorSomar)) {
+        const resultado = valorProporcional + valorSomar;
+        document.getElementById('resultadoSomaUpgrade').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+    }
 }
 
 function somarAlteracao() {
     const valorProporcional = parseFloat(document.getElementById('resultadoAlteracao').textContent.replace('Valor proporcional: R$ ', ''));
     const valorSomar = parseFloat(document.getElementById('valorSomarAlteracao').value);
-    const resultado = valorProporcional + valorSomar;
-    document.getElementById('resultadoSomaAlteracao').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+    if (!isNaN(valorProporcional) && !isNaN(valorSomar)) {
+        const resultado = valorProporcional + valorSomar;
+        document.getElementById('resultadoSomaAlteracao').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+    }
 }
 
-atualizarTipoCalculo();  // Inicializa com a lógica padrão
+// Iniciar com a configuração correta
+atualizarTipoCalculo();
