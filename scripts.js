@@ -1,5 +1,5 @@
 const maxPeriodos = 10; 
-let contadorPeriodos = 1;  // Começamos com um período já adicionado
+let contadorPeriodos = 1;  
 let calcularComMaisUm = true;
 
 function adicionarPeriodo() {
@@ -170,5 +170,5 @@ function somarAlteracao() {
     }
 }
 
-// Iniciar com a configuração correta
+
 atualizarTipoCalculo();
