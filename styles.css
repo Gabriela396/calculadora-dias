@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 90px;
     background-color: #e8a2bf60;
-    color: #333;
+    color: #ffffff;
     background-image: url('imagens/background.jpg');
     background-size: cover;
     background-position: center;
@@ -18,27 +18,27 @@ h1 {
 }
 
 h2 {
-    color: #60dfff;
+    color: #ffffff;
     text-align: left;
     padding-left: 10px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.233);
 }
 
 h3 {
-    color: #60dfff;
+    color: #ffffff;
     font-size: 23px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.192)
 }
 
 h4 {
-    color: #60dfff;
+    color: #ffffff;
     text-align: center;
     font-size: 40px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.212);
 }
 
 form {
-    background-color: #ffffff7e;
+    background-color: #0000007e;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -46,7 +46,7 @@ form {
 }
 
 label {
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -60,38 +60,42 @@ input[type="date"], input[type="number"] {
     box-sizing: border-box;
 }
 
-button {
-    background-color: #60dfff;
+.btn-principal {
+    background: linear-gradient(45deg, #c0c0c0, #505050); 
     border: none;
     border-radius: 12px;
-    color: #0e0e0e;
-    font-size: 14px;
+    color: #ffffff;
+    font-size: 12px;
     cursor: pointer;
     margin: 10px 0;
     display: flex;
     align-items: center;
-    width: 150px;
+    width: 138px;
     justify-content: center;
-    height: 40px;
+    height: 35px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra para efeito de profundidade */
+    transition: all 0.3s ease-in-out; /* Transição suave para hover */
 }
 
-button:hover {
-    color: #000000a2;
-    background-color: #0bceff;
+.btn-principal:hover {
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+    background: linear-gradient(45deg, #747474, #bdbcb8); /* Gradiente invertido para hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Realça o brilho ao passar o mouse */
+    transform: scale(1.05); /* Efeito de leve aumento */
 }
 
 .resultado {
-    background-color: #ffffff7e;
+    background-color: #0000007e;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
     margin-top: 20px;
 }
 
 .tipo-calculo-box {
-    background-color: rgba(255, 255, 255, 0.664);
+    background-color: rgba(0, 0, 0, 0.479);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -99,20 +103,20 @@ button:hover {
     width: 270px;
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 10px;
     margin-right: 70px;
-    height: 100px;
+    height: 90px;
 }
 
 .tipo-calculo-box h2 {
-    color: #60dfff;
-    font-size: 20px;
+    color: #ffffff;
+    font-size: 18px;
     margin-bottom: 15px;
     margin-top: 3px;
 }
 
 .tipo-calculo-box label {
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
     display: block;
     margin-bottom: 10px;
@@ -120,7 +124,7 @@ button:hover {
 }
 
 .tipo-calculo-box select {
-    padding: 8px;
+    padding: 5px;
     font-size: 14px;
     border-radius: 20px;
     border: 1px solid #ccc;
@@ -129,7 +133,7 @@ button:hover {
 }
 
 .box-section {
-    background-color: #ffffff7e;
+    background-color: #0000007e;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -137,7 +141,7 @@ button:hover {
 }
 
 .valor-form label {
-    color: #333;
+    color: #ffffff;
     font-weight: bold;
     display: block;
     margin-bottom: 10px;
@@ -154,18 +158,27 @@ button:hover {
 }
 
 .btn-calculo {
-    background-color: #60dfff;
+    background: linear-gradient(45deg, #cccbcb, #464646); /* Gradiente dourado */
     border: none;
-    color: #000000;
-    padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 12px;
     cursor: pointer;
-    margin-top: 10px;
-    width: 130px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    width: 138px;
+    justify-content: center;
+    height: 35px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra para efeito de profundidade */
+    transition: all 0.3s ease-in-out; /* Transição suave para hover */
 }
 
 .btn-calculo:hover {
-    background-color: #0bceff!important;
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+    background: linear-gradient(45deg, #b6b6b6, #252525); /* Gradiente invertido para hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Realça o brilho ao passar o mouse */
+    transform: scale(1.05); /* Efeito de leve aumento */
 }
 
 .soma-calculadora {
@@ -180,11 +193,11 @@ button:hover {
     padding: 1px 2px;
     cursor: pointer;
     position: absolute;
-    right: 110px;
-    width: 115px;
-    height: 21px;
-    font-size: 13px;
-    margin-top: -40px;
+    right: 115px;
+    width: 85px;
+    height: 19px;
+    font-size: 10px;
+    margin-top: 15px;
 }
 
 .remove-button:hover {
