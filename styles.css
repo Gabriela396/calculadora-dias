@@ -219,3 +219,10 @@ input[type="date"], input[type="number"] {
 .resultado-mensalidade {
     margin-top: 10px;
 }
+
+.valorTotalStyle {
+    font-weight: bold;
+    color: #ffffff; 
+    font-size: 1.2em;
+    text-transform: uppercase;
+}

@@ -148,27 +148,42 @@ function somarReativacao() {
     const valorSomar = parseFloat(document.getElementById('valorSomarReativacao').value);
     if (!isNaN(valorProporcional) && !isNaN(valorSomar)) {
         const resultado = valorProporcional + valorSomar;
-        document.getElementById('resultadoSomaReativacao').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+        const resultadoSomaElement = document.getElementById('resultadoSomaReativacao');
+        resultadoSomaElement.textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+        
+        
+        resultadoSomaElement.classList.add('valorTotalStyle');
     }
 }
+
 
 function somarUpgrade() {
     const valorProporcional = parseFloat(document.getElementById('resultadoUpgrade').textContent.replace('Valor proporcional: R$ ', ''));
     const valorSomar = parseFloat(document.getElementById('valorSomarUpgrade').value);
     if (!isNaN(valorProporcional) && !isNaN(valorSomar)) {
         const resultado = valorProporcional + valorSomar;
-        document.getElementById('resultadoSomaUpgrade').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+        const resultadoSomaElement = document.getElementById('resultadoSomaUpgrade');
+        resultadoSomaElement.textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+        
+        
+        resultadoSomaElement.classList.add('valorTotalStyle');
     }
 }
+
 
 function somarAlteracao() {
     const valorProporcional = parseFloat(document.getElementById('resultadoAlteracao').textContent.replace('Valor proporcional: R$ ', ''));
     const valorSomar = parseFloat(document.getElementById('valorSomarAlteracao').value);
     if (!isNaN(valorProporcional) && !isNaN(valorSomar)) {
         const resultado = valorProporcional + valorSomar;
-        document.getElementById('resultadoSomaAlteracao').textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+        const resultadoSomaElement = document.getElementById('resultadoSomaAlteracao');
+        resultadoSomaElement.textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
+        
+        // Adicionar a classe CSS para estilizar
+        resultadoSomaElement.classList.add('valorTotalStyle');
     }
 }
+
 
 
 atualizarTipoCalculo();
