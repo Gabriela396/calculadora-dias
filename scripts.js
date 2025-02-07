@@ -179,7 +179,7 @@ function somarAlteracao() {
         const resultadoSomaElement = document.getElementById('resultadoSomaAlteracao');
         resultadoSomaElement.textContent = `Valor total: R$ ${resultado.toFixed(2)}`;
         
-        // Adicionar a classe CSS para estilizar
+       
         resultadoSomaElement.classList.add('valorTotalStyle');
     }
 }
