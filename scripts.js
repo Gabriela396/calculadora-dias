@@ -184,6 +184,15 @@ function somarAlteracao() {
     }
 }
 
+window.addEventListener("scroll", function() {
+    let header = document.querySelector(".header");
+    if (window.scrollY > 50) {
+        header.style.top = "-60px";
+    } else {
+        header.style.top = "0";
+    }
+});
+
 
 
 atualizarTipoCalculo();

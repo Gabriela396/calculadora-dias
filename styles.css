@@ -14,9 +14,38 @@ body {
     left: 0;
     width: 100%;
     min-height: 210%; 
-    background-color: rgba(0, 0, 0, 0.329); 
+    background-color: rgba(0, 0, 0, 0); 
     z-index: -1;
 }
+
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #6529f171;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: top 0.3s;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Adiciona espaço para o cabeçalho não sobrepor o conteúdo */
+body {
+    padding-top: 50px;
+}
+
+
 h1 {
     color: #ffffff; 
     text-align: left;
@@ -107,10 +136,10 @@ input[type="date"], input[type="number"] {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.233);
-    margin-top: 45px;
+    margin-top: 60px;
     width: 270px;
     position: absolute;
-    top: 20px;
+    top: 70px;
     right: 10px;
     margin-right: 70px;
     height: 90px;
