@@ -111,7 +111,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-principal {
-    background: linear-gradient(45deg, #38a5fd, #4c00ff); 
+    background: linear-gradient(45deg, #3d1bff, #8911f8); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -129,7 +129,7 @@ input[type="date"], input[type="number"] {
 
 .btn-principal:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #5538fd, #38a5fd); 
+    background: linear-gradient(59deg, #8911f8, #3815ff); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -208,7 +208,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-calculo {
-    background: linear-gradient(45deg, #38a5fd, #4c00ff); 
+    background: linear-gradient(45deg, #3d1bff, #8911f8); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -226,7 +226,7 @@ input[type="date"], input[type="number"] {
 
 .btn-calculo:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #5538fd, #38a5fd); 
+    background: linear-gradient(59deg, #8911f8, #3815ff); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
