@@ -184,14 +184,43 @@ function somarAlteracao() {
     }
 }
 
-window.addEventListener("scroll", function() {
-    let header = document.querySelector(".header");
-    if (window.scrollY > 50) {
-        header.style.top = "-60px";
+let prevScrollPos = window.pageYOffset;
+
+window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollPos > currentScrollPos) {
+        // Rolando para cima
+        document.querySelector('.header').style.top = "0";
     } else {
-        header.style.top = "0";
+        // Rolando para baixo
+        document.querySelector('.header').style.top = "-60px"; // Ajuste conforme necessário
     }
+    prevScrollPos = currentScrollPos;
+}
+
+
+document.querySelectorAll(".btn-principal").forEach(botao => {
+    botao.addEventListener("click", function(event) {
+        for (let i = 0; i < 5; i++) { // Cria 5 borboletas por clique
+            criarBorboleta(event.clientX, event.clientY);
+        }
+    });
 });
+
+function criarBorboleta(x, y) {
+    let borboleta = document.createElement("div");
+    borboleta.classList.add("borboleta");
+    borboleta.style.left = `${x}px`;
+    borboleta.style.top = `${y}px`;
+    borboleta.style.setProperty("--x", Math.random()); // Define um movimento aleatório
+    borboleta.style.setProperty("--y", Math.random());
+    
+    document.body.appendChild(borboleta);
+
+    setTimeout(() => {
+        borboleta.remove();
+    }, 2000);
+}
 
 
 

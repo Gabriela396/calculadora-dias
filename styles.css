@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 90px;
-    background-color: #e8a2bf60;
+    background-color: rgb(255, 255, 255);
     color: #ffffff;
     background-image: url('imagens/background.jpg');
     background-size: cover;
@@ -13,7 +13,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 210%; 
+    min-height: 260%; 
     background-color: rgba(0, 0, 0, 0.171); 
     z-index: -1;
 }
@@ -24,7 +24,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #6529f171;
+    background-color: #8629f14d;
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -111,7 +111,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-principal {
-    background: linear-gradient(45deg, #3d1bff, #8911f8); 
+    background: linear-gradient(45deg, #5900ff, #a46bff); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -125,11 +125,12 @@ input[type="date"], input[type="number"] {
     height: 35px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
     transition: all 0.3s ease-in-out; 
+    
 }
 
 .btn-principal:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #8911f8, #3815ff); 
+    background: linear-gradient(59deg, #a46bff, #5900ff); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -208,7 +209,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-calculo {
-    background: linear-gradient(45deg, #3d1bff, #8911f8); 
+    background: linear-gradient(45deg, #5900ff, #a46bff); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -226,7 +227,7 @@ input[type="date"], input[type="number"] {
 
 .btn-calculo:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #8911f8, #3815ff); 
+    background: linear-gradient(59deg, #a46bff, #5900ff); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -276,3 +277,39 @@ input[type="date"], input[type="number"] {
     font-size: 1.2em;
     text-transform: uppercase;
 }
+
+.borboleta {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background-image: url('imagens/animation.png');
+    background-size: contain;
+    animation: voar 2s ease-out forwards;
+    margin-top: 200px;
+    /* As variáveis podem ser passadas pelo JS */
+    --x: 0;
+    --y: 0;
+}
+
+@keyframes voar {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(calc(-50px + 100px * var(--x)), calc(-50px + 100px * var(--y))) scale(1.2);
+    }
+    100% {
+        transform: translate(calc(-100px + 200px * var(--x)), calc(-100px + 200px * var(--y))) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.btn-principal {
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
