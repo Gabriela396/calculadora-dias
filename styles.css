@@ -114,15 +114,15 @@ input[type="date"], input[type="number"] {
 .date-pair label {
     color: #ffffff;
     font-weight: bold;
-    font-size: 16px; 
+    font-size: 17px; 
     display: inline-block;
-    margin-right: 10px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.623); 
+    margin-right: 10px !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.623) !important; 
 }
 
 
 .btn-principal {
-    background: linear-gradient(45deg, #fc5f93, #d40040); 
+    background: linear-gradient(45deg, #fc5f93, #cc003d); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
