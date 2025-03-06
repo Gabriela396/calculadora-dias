@@ -10,8 +10,10 @@ function adicionarPeriodo() {
 
     const container = document.getElementById('datePairsContainer');
 
+    // Criar a div do período com a mesma estrutura do fixo
     const periodoDiv = document.createElement('div');
-    periodoDiv.classList.add('date-pair');
+    periodoDiv.classList.add('date-pair'); // Mantém a classe igual ao fixo
+
     periodoDiv.innerHTML = `
         <label for="dataInicial${contadorPeriodos}">Data Inicial:</label>
         <input type="date" id="dataInicial${contadorPeriodos}" required>
@@ -19,9 +21,53 @@ function adicionarPeriodo() {
         <input type="date" id="dataFinal${contadorPeriodos}" required>
         <button type="button" class="remove-button" onclick="removerPeriodo(${contadorPeriodos})">Excluir Período</button>
     `;
+
     container.appendChild(periodoDiv);
 
+    // Adiciona eventos de validação e cálculo automático ao novo período
+    const inputInicial = document.getElementById(`dataInicial${contadorPeriodos}`);
+    const inputFinal = document.getElementById(`dataFinal${contadorPeriodos}`);
+
+    inputInicial.addEventListener("input", () => validarPeriodo(inputInicial, inputFinal));
+    inputFinal.addEventListener("input", () => validarPeriodo(inputInicial, inputFinal));
+    inputInicial.addEventListener("input", calcularTotalDias);
+    inputFinal.addEventListener("input", calcularTotalDias);
+
     contadorPeriodos++;
+}
+
+
+function calcularTotalDias() {
+    let totalDias = 0;
+
+    for (let i = 1; i < contadorPeriodos; i++) {  // Começa de 1 pois o primeiro período já está contado
+        const dataInicial = document.getElementById(`dataInicial${i}`);
+        const dataFinal = document.getElementById(`dataFinal${i}`);
+
+        if (dataInicial && dataFinal && dataInicial.value && dataFinal.value) {
+            const diasEntreDatas = calcularDiasEntreDatas(dataInicial.value, dataFinal.value);
+            totalDias += diasEntreDatas;
+        }
+    }
+
+    // Atualiza o resultado automaticamente na página
+    document.getElementById('resultado').textContent = `Total de dias de utilização: ${totalDias} dias.`;
+
+    return totalDias;
+}
+
+function validarPeriodo(inputInicial, inputFinal) {
+    if (inputInicial.value && inputFinal.value) {
+        const dataInicio = new Date(inputInicial.value);
+        const dataFim = new Date(inputFinal.value);
+
+        if (dataInicio > dataFim) {
+            alert("A data inicial não pode ser maior que a data final.");
+            inputFinal.value = ""; // Limpa o campo de Data Final
+        }
+    }
+    
+    calcularEAtualizarResultados();
 }
 
 function removerPeriodo(id) {
@@ -73,12 +119,31 @@ function calcularDiasEntreDatas(dataInicial, dataFinal) {
 
 // Adiciona eventos automaticamente para atualizar os dias ao mudar datas
 document.addEventListener("DOMContentLoaded", function() {
-    for (let i = 0; i < contadorPeriodos; i++) {
-        document.getElementById(`dataInicial${i}`).addEventListener("input", calcularTotalDias);
-        document.getElementById(`dataFinal${i}`).addEventListener("input", calcularTotalDias);
+    // Seleciona os inputs do primeiro período fixo
+    const inputInicialFixo = document.getElementById("dataInicial0");
+    const inputFinalFixo = document.getElementById("dataFinal0");
+
+    // Adiciona eventos para validar as datas no primeiro período fixo
+    inputInicialFixo.addEventListener("input", () => validarPeriodo(inputInicialFixo, inputFinalFixo));
+    inputFinalFixo.addEventListener("input", () => validarPeriodo(inputInicialFixo, inputFinalFixo));
+
+    // Adiciona eventos para calcular automaticamente os dias ao alterar as datas
+    inputInicialFixo.addEventListener("input", calcularTotalDias);
+    inputFinalFixo.addEventListener("input", calcularTotalDias);
+
+    // Adiciona eventos aos demais períodos já existentes (caso existam)
+    for (let i = 1; i < contadorPeriodos; i++) {
+        const inputInicial = document.getElementById(`dataInicial${i}`);
+        const inputFinal = document.getElementById(`dataFinal${i}`);
+
+        if (inputInicial && inputFinal) {
+            inputInicial.addEventListener("input", () => validarPeriodo(inputInicial, inputFinal));
+            inputFinal.addEventListener("input", () => validarPeriodo(inputInicial, inputFinal));
+            inputInicial.addEventListener("input", calcularTotalDias);
+            inputFinal.addEventListener("input", calcularTotalDias);
+        }
     }
 });
-
 
 function atualizarTipoCalculo() {
     const tipoCalculo = document.getElementById('tipoCalculo').value;

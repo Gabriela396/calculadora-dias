@@ -111,7 +111,7 @@ input[type="date"], input[type="number"] {
 }
 
 
-label[for="dataInicial0"], label[for="dataFinal0"] {
+.date-pair label {
     color: #ffffff;
     font-weight: bold;
     font-size: 16px; 
@@ -119,8 +119,6 @@ label[for="dataInicial0"], label[for="dataFinal0"] {
     margin-right: 10px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.623); 
 }
-
-
 
 
 .btn-principal {
