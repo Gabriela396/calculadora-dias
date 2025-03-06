@@ -24,18 +24,15 @@ function adicionarPeriodo() {
 
     container.appendChild(periodoDiv);
 
-    // Adiciona eventos de validação e cálculo automático ao novo período
+    // Adiciona eventos de cálculo automático ao novo período
     const inputInicial = document.getElementById(`dataInicial${contadorPeriodos}`);
     const inputFinal = document.getElementById(`dataFinal${contadorPeriodos}`);
 
-    inputInicial.addEventListener("input", () => validarPeriodo(inputInicial, inputFinal));
-    inputFinal.addEventListener("input", () => validarPeriodo(inputInicial, inputFinal));
     inputInicial.addEventListener("input", calcularTotalDias);
     inputFinal.addEventListener("input", calcularTotalDias);
 
     contadorPeriodos++;
 }
-
 
 function calcularTotalDias() {
     let totalDias = 0;
@@ -56,18 +53,13 @@ function calcularTotalDias() {
     return totalDias;
 }
 
-function validarPeriodo(inputInicial, inputFinal) {
-    if (inputInicial.value && inputFinal.value) {
-        const dataInicio = new Date(inputInicial.value);
-        const dataFim = new Date(inputFinal.value);
+function calcularDiasEntreDatas(dataInicial, dataFinal) {
+    const data1 = new Date(dataInicial);
+    const data2 = new Date(dataFinal);
 
-        if (dataInicio > dataFim) {
-            alert("A data inicial não pode ser maior que a data final.");
-            inputFinal.value = ""; // Limpa o campo de Data Final
-        }
-    }
-    
-    calcularEAtualizarResultados();
+    // Subtrai as datas e converte de milissegundos para dias
+    const diferença = (data2 - data1) / (1000 * 3600 * 24);
+    return calcularComMaisUm ? diferença + 1 : diferença;
 }
 
 function removerPeriodo(id) {
@@ -117,7 +109,6 @@ function calcularDiasEntreDatas(dataInicial, dataFinal) {
     return calcularComMaisUm ? (dias2 - dias1) + 1 : (dias2 - dias1);
 }
 
-// Adiciona eventos automaticamente para atualizar os dias ao mudar datas
 document.addEventListener("DOMContentLoaded", function() {
     // Seleciona os inputs do primeiro período fixo
     const inputInicialFixo = document.getElementById("dataInicial0");
@@ -144,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
 
 function atualizarTipoCalculo() {
     const tipoCalculo = document.getElementById('tipoCalculo').value;
