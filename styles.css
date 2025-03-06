@@ -13,8 +13,8 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 260%; 
-    background-color: rgba(0, 0, 0, 0.171); 
+    min-height: 200%; 
+    background-color: rgba(0, 0, 0, 0.178); 
     z-index: -1;
 }
 
@@ -24,7 +24,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #8629f14d;
+    background-color: #f129444d;
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -63,7 +63,7 @@ h1 {
     color: #ffffff; 
     text-align: left;
     padding-left: 10px;
-    font-size: 50px;
+    font-size: 47px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.644);
 }
 
@@ -102,7 +102,7 @@ label {
 
 input[type="date"], input[type="number"] {
     padding: 8px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 17px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
@@ -110,8 +110,22 @@ input[type="date"], input[type="number"] {
     box-sizing: border-box;
 }
 
+
+
+label[for="dataInicial0"], label[for="dataFinal0"] {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 16px; 
+    display: inline-block;
+    margin-right: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.623); 
+}
+
+
+
+
 .btn-principal {
-    background: linear-gradient(45deg, #5900ff, #a46bff); 
+    background: linear-gradient(45deg, #fc5f93, #d40040); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -130,7 +144,7 @@ input[type="date"], input[type="number"] {
 
 .btn-principal:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #a46bff, #5900ff); 
+    background: linear-gradient(59deg, #d40040, #fc5f93); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -189,18 +203,41 @@ input[type="date"], input[type="number"] {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.315);
     margin-top: 20px;
+    text-shadow: #000000ad;
 }
+
+
+.soma-calculadora label, .valor-form label {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.726);
+    display: inline-block; /* Faz o label se alinhar com o input */
+}
+
+
+#descontoSection label {
+    color: #ffffff;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.671); 
+}
+
 
 .valor-form label {
     color: #ffffff;
     font-weight: bold;
     display: block;
     margin-bottom: 10px;
+    text-shadow: #000000ad;
 }
 
 .valor-form input[type="number"] {
     padding: 8px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 17px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
@@ -209,7 +246,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-calculo {
-    background: linear-gradient(45deg, #5900ff, #a46bff); 
+    background: linear-gradient(45deg, #fc5f93, #d40040); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -227,7 +264,7 @@ input[type="date"], input[type="number"] {
 
 .btn-calculo:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #a46bff, #5900ff); 
+    background: linear-gradient(59deg, #d40040, #fc5f93); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -260,7 +297,7 @@ input[type="date"], input[type="number"] {
 .resultado-soma,
 .resultado-mensalidade {
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
     font-size: 19px;
 }
 
@@ -280,8 +317,8 @@ input[type="date"], input[type="number"] {
 
 .borboleta {
     position: absolute;
-    width: 90px;
-    height: 90px;
+    width: 30px;
+    height: 30px;
     background-image: url('imagens/animation.png');
     background-size: contain;
     animation: voar 2s ease-out forwards;

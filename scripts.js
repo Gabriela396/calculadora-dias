@@ -13,9 +13,9 @@ function adicionarPeriodo() {
     const periodoDiv = document.createElement('div');
     periodoDiv.classList.add('date-pair');
     periodoDiv.innerHTML = `
-        <label for="dataInicial${contadorPeriodos}">Data Inicial: </label>
+        <label for="dataInicial${contadorPeriodos}">Data Inicial:</label>
         <input type="date" id="dataInicial${contadorPeriodos}" required>
-        <label for="dataFinal${contadorPeriodos}">Data Final: </label>
+        <label for="dataFinal${contadorPeriodos}">Data Final:</label>
         <input type="date" id="dataFinal${contadorPeriodos}" required>
         <button type="button" class="remove-button" onclick="removerPeriodo(${contadorPeriodos})">Excluir Período</button>
     `;
@@ -30,19 +30,12 @@ function removerPeriodo(id) {
     contadorPeriodos--;
 }
 
-// Função de cálculo sem verificar o valor da mensalidade
+
 document.getElementById('dateForm').addEventListener('submit', function(event) {
     event.preventDefault();
     calcularEAtualizarResultados();
 });
 
-// Tecla Enter também dispara o cálculo
-document.getElementById('dateForm').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        calcularEAtualizarResultados();
-    }
-});
 
 function calcularEAtualizarResultados() {
     let totalDias = calcularTotalDias();
@@ -61,6 +54,10 @@ function calcularTotalDias() {
             totalDias += diasEntreDatas;
         }
     }
+
+    // Atualiza o resultado automaticamente na página
+    document.getElementById('resultado').textContent = `Total de dias de utilização: ${totalDias} dias.`;
+
     return totalDias;
 }
 
@@ -68,12 +65,20 @@ function calcularDiasEntreDatas(dataInicial, dataFinal) {
     const data1 = new Date(dataInicial);
     const data2 = new Date(dataFinal);
     
-    // Ajustar para que cada mês tenha 30 dias
     const dias1 = (data1.getUTCFullYear() * 360) + ((data1.getUTCMonth() + 1 - 1) * 30) + data1.getUTCDate();
     const dias2 = (data2.getUTCFullYear() * 360) + ((data2.getUTCMonth() + 1 - 1) * 30) + data2.getUTCDate();
 
     return calcularComMaisUm ? (dias2 - dias1) + 1 : (dias2 - dias1);
 }
+
+// Adiciona eventos automaticamente para atualizar os dias ao mudar datas
+document.addEventListener("DOMContentLoaded", function() {
+    for (let i = 0; i < contadorPeriodos; i++) {
+        document.getElementById(`dataInicial${i}`).addEventListener("input", calcularTotalDias);
+        document.getElementById(`dataFinal${i}`).addEventListener("input", calcularTotalDias);
+    }
+});
+
 
 function atualizarTipoCalculo() {
     const tipoCalculo = document.getElementById('tipoCalculo').value;
@@ -82,6 +87,7 @@ function atualizarTipoCalculo() {
     document.getElementById('reativacaoSection').style.display = 'none';
     document.getElementById('upgradeSection').style.display = 'none';
     document.getElementById('alteracaoSection').style.display = 'none';
+    document.getElementById('descontoSection').style.display = 'none';
 
     // Mostrar a seção correspondente ao tipo de cálculo
     if (tipoCalculo === 'reativacao') {
@@ -93,11 +99,15 @@ function atualizarTipoCalculo() {
     } else if (tipoCalculo === 'alteracao') {
         calcularComMaisUm = false;
         document.getElementById('alteracaoSection').style.display = 'block';
+    } else if (tipoCalculo === 'desconto') {
+        calcularComMaisUm = true;
+        document.getElementById('descontoSection').style.display = 'block';
     }
 
     // Recalcular os resultados
     calcularEAtualizarResultados();
 }
+
 
 function atualizarValoresCalculo(totalDias) {
     const tipoCalculo = document.getElementById('tipoCalculo').value;
@@ -142,6 +152,20 @@ function calcularAlteracao() {
     } 
 }
 
+function calcularDesconto() {
+    const valorMensalidade = parseFloat(document.getElementById('valorDesconto').value);
+    
+    
+    const totalDias = parseInt(document.getElementById('resultado').textContent.replace('Total de dias de utilização: ', '').replace(' dias.', ''));
+
+    if (!isNaN(valorMensalidade) && !isNaN(totalDias) && totalDias > 0) {
+        const resultado = (valorMensalidade / 30) * totalDias; 
+        const resultadoDescontoElement = document.getElementById('resultadoDesconto');
+        resultadoDescontoElement.textContent = `Valor do desconto: R$ ${resultado.toFixed(2)}`;
+
+        resultadoDescontoElement.classList.add('valorTotalStyle');
+    } 
+}
 
 function somarReativacao() {
     const valorProporcional = parseFloat(document.getElementById('resultadoReativacao').textContent.replace('Valor proporcional: R$ ', ''));
@@ -184,6 +208,7 @@ function somarAlteracao() {
     }
 }
 
+
 let prevScrollPos = window.pageYOffset;
 
 window.onscroll = function() {
@@ -201,7 +226,7 @@ window.onscroll = function() {
 
 document.querySelectorAll(".btn-principal").forEach(botao => {
     botao.addEventListener("click", function(event) {
-        for (let i = 0; i < 5; i++) { // Cria 5 borboletas por clique
+        for (let i = 0; i < 15; i++) { // Cria 15 borboletas por clique
             criarBorboleta(event.clientX, event.clientY);
         }
     });
