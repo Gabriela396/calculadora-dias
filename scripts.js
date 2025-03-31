@@ -211,17 +211,25 @@ function calcularAlteracao() {
 
 function calcularDesconto() {
     const valorMensalidade = parseFloat(document.getElementById('valorDesconto').value);
-    
-    
     const totalDias = parseInt(document.getElementById('resultado').textContent.replace('Total de dias de utilização: ', '').replace(' dias.', ''));
 
     if (!isNaN(valorMensalidade) && !isNaN(totalDias) && totalDias > 0) {
-        const resultado = (valorMensalidade / 30) * totalDias; 
-        const resultadoDescontoElement = document.getElementById('resultadoDesconto');
-        resultadoDescontoElement.textContent = `Valor do desconto: R$ ${resultado.toFixed(2)}`;
+        // Calcula o desconto proporcional
+        const desconto = (valorMensalidade / 30) * totalDias;
+        
+        // Calcula o valor da mensalidade após o desconto
+        const mensalidadeComDesconto = valorMensalidade - desconto;
 
+        // Exibe os valores na tela
+        const resultadoDescontoElement = document.getElementById('resultadoDesconto');
+        resultadoDescontoElement.innerHTML = `
+            Valor do desconto: R$ ${desconto.toFixed(2)} <br>
+            O valor total da mensalidade com desconto é: R$ ${mensalidadeComDesconto.toFixed(2)}
+        `;
+
+        // Aplica a classe de estilo
         resultadoDescontoElement.classList.add('valorTotalStyle');
-    } 
+    }
 }
 
 function somarReativacao() {
@@ -283,7 +291,7 @@ window.onscroll = function() {
 
 document.querySelectorAll(".btn-principal").forEach(botao => {
     botao.addEventListener("click", function(event) {
-        for (let i = 0; i < 15; i++) { // Cria 15 borboletas por clique
+        for (let i = 0; i < 2; i++) { // Cria X borboletas por clique
             criarBorboleta(event.clientX, event.clientY);
         }
     });

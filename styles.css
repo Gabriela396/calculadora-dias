@@ -7,57 +7,81 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    padding-top: 50px;
 }
+
+
 .background-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 200%; 
+    min-height: 210%; 
     background-color: rgba(0, 0, 0, 0.178); 
     z-index: -1;
 }
 
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
 
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f129444d;
-    color: white;
-    padding: 10px 20px;
+    background: linear-gradient(145deg, #8b4513da, #5c4033cb); /* Cores de chocolate */
+    color: #fff;
+    padding: 14px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: top 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 95% 90%, 90% 70%, 80% 95%, 75% 65%, 65% 100%, 60% 80%, 55% 90%, 50% 70%, 45% 90%, 40% 60%, 35% 90%, 30% 75%, 25% 90%, 20% 70%, 15% 85%, 5% 75%, 10% 80%, 5% 65%, 0 100%);
+    transition: top 0.3s ease-in-out; /* Transição suave para a mudança de posição */
 }
 
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    border-radius: 50% 50% 0 0; 
+    transform: scaleX(1.3) scaleY(0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+
 .header a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 10px;
     letter-spacing: 1px;
     text-transform: uppercase;
     padding: 5px 15px;
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
     border-bottom: 2px solid transparent;
+    transform: translateY(-6px); /* Movendo o link um pouco para cima */
 }
 
 .header a:hover {
-    color: #d8dcff;
+    color: #ffb9da;
     border-bottom: 2px solid #d8dcff;
+    transform: translateY(-6px); /* Aumentando o movimento para cima ao passar o mouse */
 }
-
-
-/* Adiciona espaço para o cabeçalho não sobrepor o conteúdo */
-body {
-    padding-top: 50px;
-}
-
 
 h1 {
     color: #ffffff; 
@@ -71,24 +95,24 @@ h2 {
     color: #ffffff;
     text-align: left;
     padding-left: 10px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.233);
+    text-shadow:  3px 3px 5px rgba(0, 0, 0, 0.493);
 }
 
 h3 {
     color: #ffffff;
     font-size: 23px;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.432)
+    text-shadow:  3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 h4 {
     color: #ffffff;
     text-align: center;
     font-size: 40px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.39);
+    text-shadow:  3px 3px 5px rgba(0, 0, 0, 0.644);
 }
 
 form {
-    background-color: #ffffff7e;
+    background-color: #ffffff71;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(27, 27, 27, 0.219);
@@ -120,9 +144,13 @@ input[type="date"], input[type="number"] {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.623) !important; 
 }
 
+#resultadoDesconto {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.507); 
+    font-weight: bold;
+}
 
 .btn-principal {
-    background: linear-gradient(45deg, #fc5f93, #d40040); 
+    background: linear-gradient(45deg, #ff97d4, #ff4986); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -141,23 +169,29 @@ input[type="date"], input[type="number"] {
 
 .btn-principal:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #d40040, #fc5f93); 
+    background: linear-gradient(59deg, #ff4986, #ff97d4); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
 
-.resultado {
-    background-color: #ffffff96;
+.resultado { 
+    background-color: #ffffff8c;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: #ffffff;
     font-weight: bold;
     margin-top: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.637);
+}
+
+#resultadoReativacao {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra para melhorar a legibilidade */
+    color: white; /* Garantir que a cor do texto seja branca */
 }
 
 .tipo-calculo-box {
-    background-color: rgba(255, 255, 255, 0.582);
+    background-color: rgba(255, 255, 255, 0.521);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.233);
@@ -195,12 +229,12 @@ input[type="date"], input[type="number"] {
 }
 
 .box-section {
-    background-color: #ffffff96;
+    background-color: #ffffff85;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.315);
     margin-top: 20px;
-    text-shadow: #000000ad;
+    text-shadow: #0000009c;
 }
 
 
@@ -209,7 +243,7 @@ input[type="date"], input[type="number"] {
     font-weight: bold;
     font-size: 17px;
     margin-bottom: 8px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.726);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.658);
     display: inline-block; /* Faz o label se alinhar com o input */
 }
 
@@ -220,7 +254,7 @@ input[type="date"], input[type="number"] {
     display: block;
     margin-bottom: 10px;
     font-size: 18px; 
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.671); 
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.582); 
 }
 
 
@@ -229,7 +263,7 @@ input[type="date"], input[type="number"] {
     font-weight: bold;
     display: block;
     margin-bottom: 10px;
-    text-shadow: #000000ad;
+    text-shadow: #00000096;
 }
 
 .valor-form input[type="number"] {
@@ -243,7 +277,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-calculo {
-    background: linear-gradient(45deg, #fc5f93, #d40040); 
+    background: linear-gradient(45deg, #ff97d4, #ff4986); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -261,7 +295,7 @@ input[type="date"], input[type="number"] {
 
 .btn-calculo:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #d40040, #fc5f93); 
+    background: linear-gradient(59deg, #ff4986, #ff97d4); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -314,8 +348,8 @@ input[type="date"], input[type="number"] {
 
 .borboleta {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     background-image: url('imagens/animation.png');
     background-size: contain;
     animation: voar 2s ease-out forwards;
