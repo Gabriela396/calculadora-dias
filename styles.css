@@ -141,12 +141,12 @@ input[type="date"], input[type="number"] {
     font-size: 16px; 
     display: inline-block;
     margin-right: 10px !important;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.623) !important; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.575) !important; 
 }
 
-#resultadoDesconto {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.507); 
-    font-weight: bold;
+.valorTotalStyle {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.548);
+    color: white;
 }
 
 .btn-principal {
@@ -186,9 +186,19 @@ input[type="date"], input[type="number"] {
 }
 
 #resultadoReativacao {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra para melhorar a legibilidade */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.74); /* Sombra para melhorar a legibilidade */
     color: white; /* Garantir que a cor do texto seja branca */
 }
+
+#resultadoAlteracao {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.712) !important;
+    color: white !important;
+}
+#resultadoUpgrade {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.692) !important;
+    color: white !important;
+}
+
 
 .tipo-calculo-box {
     background-color: rgba(255, 255, 255, 0.521);
@@ -234,7 +244,7 @@ input[type="date"], input[type="number"] {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.315);
     margin-top: 20px;
-    text-shadow: #0000009c;
+    text-shadow: #0000007a;
 }
 
 
