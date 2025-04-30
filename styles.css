@@ -10,7 +10,6 @@ body {
     padding-top: 50px;
 }
 
-
 .background-overlay {
     position: absolute;
     top: 0;
@@ -21,33 +20,21 @@ body {
     z-index: -1;
 }
 
-#background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
 
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(145deg, #8b4513da, #5c4033cb); /* Cores de chocolate */
-    color: #fff;
-    padding: 14px 24px;
+    background-color: #ff61894d;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 95% 90%, 90% 70%, 80% 95%, 75% 65%, 65% 100%, 60% 80%, 55% 90%, 50% 70%, 45% 90%, 40% 60%, 35% 90%, 30% 75%, 25% 90%, 20% 70%, 15% 85%, 5% 75%, 10% 80%, 5% 65%, 0 100%);
-    transition: top 0.3s ease-in-out; /* Transição suave para a mudança de posição */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: top 0.3s;
 }
-
 
 .header::before {
     content: '';
@@ -358,8 +345,8 @@ input[type="date"], input[type="number"] {
 
 .borboleta {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     background-image: url('imagens/animation.png');
     background-size: contain;
     animation: voar 2s ease-out forwards;
