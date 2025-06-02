@@ -26,7 +26,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #ff61894d;
+    background-color: #ffda614d;
     color: rgb(255, 255, 255);
     padding: 10px 20px;
     display: flex;
@@ -137,7 +137,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-principal {
-    background: linear-gradient(45deg, #ff97d4, #ff4986); 
+    background: linear-gradient(45deg, #ffd54c, #fc7d07); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -156,7 +156,7 @@ input[type="date"], input[type="number"] {
 
 .btn-principal:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #ff4986, #ff97d4); 
+    background: linear-gradient(59deg, #fc7d07, #ffd54c); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -274,7 +274,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-calculo {
-    background: linear-gradient(45deg, #ff97d4, #ff4986); 
+    background: linear-gradient(45deg, #ffd54c, #fc7d07); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -292,7 +292,7 @@ input[type="date"], input[type="number"] {
 
 .btn-calculo:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #ff4986, #ff97d4); 
+    background: linear-gradient(59deg, #fc7d07, #ffd54c); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -345,8 +345,8 @@ input[type="date"], input[type="number"] {
 
 .borboleta {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background-image: url('imagens/animation.png');
     background-size: contain;
     animation: voar 2s ease-out forwards;

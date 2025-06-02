@@ -291,7 +291,7 @@ window.onscroll = function() {
 
 document.querySelectorAll(".btn-principal").forEach(botao => {
     botao.addEventListener("click", function(event) {
-        for (let i = 0; i < 8; i++) { // Cria X borboletas por clique
+        for (let i = 0; i < 2; i++) { // Cria X borboletas por clique
             criarBorboleta(event.clientX, event.clientY);
         }
     });
