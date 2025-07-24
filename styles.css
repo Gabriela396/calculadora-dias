@@ -30,7 +30,8 @@ body {
     color: rgb(255, 255, 255);
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start; 
+    gap: 9px;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: top 0.3s;
@@ -61,12 +62,15 @@ body {
     border-radius: 5px;
     transition: all 0.3s ease-in-out;
     border-bottom: 2px solid transparent;
-    transform: translateY(-6px); /* Movendo o link um pouco para cima */
+    transform: translateY(-2px); /* Movendo o link um pouco para cima */
+
 }
 
+
+
 .header a:hover {
-    color: #ffb9da;
-    border-bottom: 2px solid #d8dcff;
+    color: #ff6600;
+    border-bottom: 2px solid #ff4800;
     transform: translateY(-6px); /* Aumentando o movimento para cima ao passar o mouse */
 }
 
