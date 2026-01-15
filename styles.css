@@ -1,35 +1,23 @@
 body {
     font-family: Arial, sans-serif;
     margin: 90px;
-    background-color: transparent;
+    background-color: rgb(255, 255, 255);
     color: #ffffff;
-    /*background-image: url('imagens/background.jpg');*/
+    background-image: url('imagens/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     padding-top: 50px;
-    
 }
-
-.video-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;   /* <--- ESSA LINHA IMPORTA! */
-}
-
 
 .background-overlay {
-   position: fixed;     /* fixo ao viewport */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;        /* cobrir viewport inteiro */
-    background-color: rgba(0, 0, 0, 0.178);
-    z-index: 1;
+    min-height: 210%; 
+    background-color: rgba(0, 0, 0, 0.178); 
+    z-index: -1;
 }
 
 
@@ -38,14 +26,14 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #ff00004d;
+    background-color: #ffda614d;
     color: rgb(255, 255, 255);
     padding: 10px 20px;
     display: flex;
     justify-content: flex-start; 
     gap: 9px;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     transition: top 0.3s;
 }
 
@@ -153,7 +141,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-principal {
-    background: linear-gradient(45deg, #ff0000, #980000); 
+    background: linear-gradient(45deg, #ffd54c, #fc7d07); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -172,7 +160,7 @@ input[type="date"], input[type="number"] {
 
 .btn-principal:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #b61111 , #e37351); 
+    background: linear-gradient(59deg, #fc7d07, #ffd54c); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -290,7 +278,7 @@ input[type="date"], input[type="number"] {
 }
 
 .btn-calculo {
-    background: linear-gradient(45deg, #ff0000, #980000); 
+    background: linear-gradient(45deg, #ffd54c, #fc7d07); 
     border: none;
     border-radius: 12px;
     color: #ffffff;
@@ -308,7 +296,7 @@ input[type="date"], input[type="number"] {
 
 .btn-calculo:hover {
     color: #ffffff; 
-    background: linear-gradient(59deg, #b61111 , #e37351); 
+    background: linear-gradient(59deg, #fc7d07, #ffd54c); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); 
     transform: scale(1.05); 
 }
@@ -390,25 +378,3 @@ input[type="date"], input[type="number"] {
     position: relative;
     overflow: hidden;
 }
-
-/* impede que o overlay e o vídeo bloqueiem cliques */
-.video-bg,
-.background-overlay {
-    pointer-events: none;
-}
-
-/* força todos os elementos de conteúdo para frente */
-body * {
-    position: relative;
-    z-index: 2;
-    pointer-events: auto;
-}
-
-/* mantém apenas o overlay acima do vídeo */
-.background-overlay {
-    z-index: 1 !important;
-}
-
-
-
-
